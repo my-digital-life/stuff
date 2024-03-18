@@ -1,7 +1,8 @@
 #!/bin/sh
 
+# setup ssh
 # sudo curl -sS https://raw.githubusercontent.com/my-digital-life/stuff/main/ssh.sh | bash
-# set up the timezone, I don't want time to screw up https
+# set timezone, I don't want time to screw up https
 sudo timedatectl set-timezone "America/Toronto"
 
 # Upgrade
