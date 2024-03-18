@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # sudo curl -sS https://raw.githubusercontent.com/my-digital-life/stuff/main/setup.sh | bash
 # set up the timezone
 timedatectl set-timezone "America/Toronto"
@@ -19,7 +20,7 @@ if ! [ -x "$(command -v sshd)" ]; then
     echo "${Green}SSH installed.${Reset}"
 else
     echo "${Green}openssh-server is already installed.${Reset}"
-fi
+
 # config ssh
 sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
