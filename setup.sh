@@ -1,5 +1,5 @@
 #!/bin/sh
-# sudo curl -sS 
+# sudo curl -sS https://raw.githubusercontent.com/my-digital-life/stuff/main/setup.sh
 # set up the timezone
 timedatectl set-timezone "America/Toronto"
 fi
