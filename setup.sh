@@ -2,7 +2,7 @@
 
 # sudo curl -sS https://raw.githubusercontent.com/my-digital-life/stuff/main/setup.sh | bash
 # set up the timezone
-timedatectl set-timezone "America/Toronto"
+sudo timedatectl set-timezone "America/Toronto"
 
 # Remove snapd and ubuntu-advantage-tools
 sudo apt -y purge ubuntu-advantage-tools snapd && sudo apt -y autoremove
