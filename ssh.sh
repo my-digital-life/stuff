@@ -3,7 +3,7 @@
 # # Echoes all commands before executing.
 set -o verbose
 
-# setup ssh
+# pre install
 # sudo curl -sS https://raw.githubusercontent.com/my-digital-life/stuff/main/ssh.sh | bash
 # set timezone, I don't want time to screw up https
 sudo timedatectl set-timezone "America/Toronto"
