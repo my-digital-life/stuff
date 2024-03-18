@@ -2,7 +2,6 @@
 # sudo curl -sS https://raw.githubusercontent.com/my-digital-life/stuff/main/setup.sh | bash
 # set up the timezone
 timedatectl set-timezone "America/Toronto"
-fi
 
 # Remove snapd and ubuntu-advantage-tools
 sudo apt -y purge ubuntu-advantage-tools snapd && sudo apt -y autoremove
@@ -10,7 +9,6 @@ sudo apt -y purge ubuntu-advantage-tools snapd && sudo apt -y autoremove
 # Update
 sudo apt update
 sudo apt -y dist-upgrade
-fi
 
 # install SSH
 if ! [ -x "$(command -v sshd)" ]; then
@@ -24,5 +22,5 @@ else
 fi
 # config ssh
 sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-fi
+
 
